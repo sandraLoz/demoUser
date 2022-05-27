@@ -3,7 +3,7 @@ name: Build and Push Image to Google Cloud Platform
 on:
   push:
     branches: 
-      - master
+      - main
 env:
   IMAGE_NAME: demo-user
   PROJECT_ID: opplus-cloud
