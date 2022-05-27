@@ -53,6 +53,7 @@ jobs:
    
     - name: 'Deploy to Cloud Run'
       uses: 'google-github-actions/deploy-cloudrun@v0'
-      with:
-        image: 'europe-southwest1-docker.pkg.dev/$PROJECT_ID/demo-user/$IMAGE_NAME:latest'
+      with:        
+        region: europe-southwest1
         service: 'demo-user'
+        image: 'europe-southwest1-docker.pkg.dev/$PROJECT_ID/demo-user/$IMAGE_NAME:latest'
