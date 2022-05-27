@@ -56,4 +56,4 @@ jobs:
       with:        
         region: europe-southwest1
         service: 'demo-user'
-        image: 'europe-southwest1-docker.pkg.dev/$PROJECT_ID/demo-user/$IMAGE_NAME:latest'
+        image: 'europe-southwest1-docker.pkg.dev/opplus-cloud/demo-user/demo-user:latest'
