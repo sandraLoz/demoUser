@@ -8,6 +8,7 @@ env:
   IMAGE_NAME: demo-user
   PROJECT_ID: opplus-cloud
   GIT_TAG: ${{ github.sha }}
+  
 jobs:
   build-push-gcr:
     name: Build and Push to GCP
