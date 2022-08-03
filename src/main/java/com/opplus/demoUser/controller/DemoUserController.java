@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,6 +25,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import utilsOpp.UtilsOpp;
 
 @Api(tags = "DemoUser API")
 
@@ -52,6 +54,23 @@ public class DemoUserController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@PostMapping("/sum")
+	@ApiOperation(value = "Sumatorio Demo", nickname = "Sumatorio Demo", response = String.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
+			@ApiResponse(code = 201, message = "Created"), @ApiResponse(code = 400, message = "Bad request"),
+			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+			@ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
+	public ResponseEntity<String> sumatorio(@RequestParam(value = "sumando1", defaultValue = "0") Double sumando1, @RequestParam(value = "sumando2", defaultValue = "0") Double sumando2) {
+		try {
+			return new ResponseEntity<>(String.format("Resultado de la operación %s + %s = %s", sumando1, sumando2, UtilsOpp.suma(sumando1, sumando2)), HttpStatus.OK);
+		} catch (ResponseStatusException e) {
+			throw e;
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 
 	
 
