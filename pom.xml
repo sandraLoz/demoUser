@@ -15,6 +15,14 @@
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>java-net-repo</id>
+			<url>http://34.175.50.60:8081/repository/maven-public/</url>
+		</repository>
+	</repositories>
+
 	<!--SPRING CLOUD -->
 	<dependencyManagement>
 		<dependencies>
