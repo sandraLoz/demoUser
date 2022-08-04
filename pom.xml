@@ -20,7 +20,7 @@
 
 	<repositories>
 		<repository>
-			<id>java-net-repo</id>
+			<id>maven-public</id>
 			<url>http://34.175.50.60:8081/repository/maven-public/</url>
 		</repository>
 	</repositories>
