@@ -118,13 +118,20 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus</id>
 			<url>http://34.175.50.60:8081/repository/maven-public/</url>
 		</snapshotRepository>
+		<repository>
+			<id>nexus</id>
+			<url>http://34.175.50.60:8081/repository/maven-releases/</url>
+		</repository>
 	</distributionManagement>
+	 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
