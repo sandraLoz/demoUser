@@ -116,7 +116,7 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
+	<!--distributionManagement>
 		<snapshotRepository>
 			<id>nexus</id>
 			<url>http://34.175.50.60:8081/repository/maven-public/</url>
@@ -125,7 +125,7 @@
 			<id>nexus</id>
 			<url>http://34.175.50.60:8081/repository/maven-releases/</url>
 		</repository>
-	</distributionManagement>
+	</distributionManagement-->
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
