@@ -18,7 +18,7 @@ COPY src ./src
 
 # Build a release artifact.
 #RUN mvn package -DskipTests
-RUN mvn clean install -Dmaven.test.skip -DskipTests -s settings.xml
+RUN mvn clean install -DskipTests -s settings.xml
 # Use AdoptOpenJDK for base image.
 # It's important to use OpenJDK 8u191 or above that has container support enabled.
 # https://hub.docker.com/r/adoptopenjdk/openjdk8

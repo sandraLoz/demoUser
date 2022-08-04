@@ -38,23 +38,5 @@
                 </repository>
             </repositories>
         </profile>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                    http://34.175.86.230:9000/
-                </sonar.host.url>
-            </properties>
-        </profile>
-        <profile>
-            <id>coverage</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>            
-        </profile>
     </profiles>
 </settings>
