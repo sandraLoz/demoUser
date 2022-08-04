@@ -18,7 +18,7 @@ COPY src ./src
 
 # Build a release artifact.
 #RUN mvn package -DskipTests
-RUN mvn package -DskipTests -s settings.xml
+RUN mvn package -ntp -q -DskipTests -s settings.xml
 
 FROM adoptopenjdk/openjdk11:alpine-slim
 
