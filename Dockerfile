@@ -11,10 +11,11 @@
 FROM maven:3.8.6-jdk-11 as builder
 
 # Copy local code to the container image.
+RUN mkdir ./.m2
+COPY settings.xml ./.m2
+
 WORKDIR /app
 COPY pom.xml .
-MKDIR ./.m2
-COPY settings.xml ./.m2
 COPY src ./src
 
 # Build a release artifact.
