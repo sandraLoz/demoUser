@@ -18,12 +18,12 @@
 		<mapstruct.version>1.5.2.Final</mapstruct.version>
 	</properties>
 
-	<repositories>
+	<!--repositories>
 		<repository>
-			<id>maven-public</id>
+			<id>nexus</id>
 			<url>http://34.175.50.60:8081/repository/maven-public/</url>
 		</repository>
-	</repositories>
+	</repositories-->
 
 	<!--SPRING CLOUD -->
 	<dependencyManagement>
