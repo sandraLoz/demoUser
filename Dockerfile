@@ -18,11 +18,8 @@ COPY src ./src
 
 # Build a release artifact.
 #RUN mvn package -DskipTests
-RUN mvn clean install -DskipTests -s settings.xml
-# Use AdoptOpenJDK for base image.
-# It's important to use OpenJDK 8u191 or above that has container support enabled.
-# https://hub.docker.com/r/adoptopenjdk/openjdk8
-# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+RUN mvn package -DskipTests -s settings.xml
+
 FROM adoptopenjdk/openjdk11:alpine-slim
 
 # Copy the jar to the production image from the builder stage.
