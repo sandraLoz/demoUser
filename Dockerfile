@@ -27,7 +27,7 @@ RUN mvn package -ntp -q -DskipTests -s ./m2/settings.xml
 
 FROM adoptopenjdk/openjdk11:alpine-slim
 
-RUN dir /app/target
+RUN dir /app
 # Copy the jar to the production image from the builder stage.
 COPY --from=builder /app/target/demoUser*.jar /demoUser.jar
 
