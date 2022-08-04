@@ -13,11 +13,12 @@ FROM maven:3.8.5-jdk-11 as builder
 # Copy local code to the container image.
 WORKDIR /app
 COPY pom.xml .
+COPY settings.xml .
 COPY src ./src
 
 # Build a release artifact.
-RUN mvn package -DskipTests
-
+#RUN mvn package -DskipTests
+RUN mvn clean install -Dmaven.test.skip -DskipTests -s settings.xml
 # Use AdoptOpenJDK for base image.
 # It's important to use OpenJDK 8u191 or above that has container support enabled.
 # https://hub.docker.com/r/adoptopenjdk/openjdk8

@@ -1,0 +1,119 @@
+<!--<settings>-->
+  <!--<mirrors>-->
+    <!--<mirror>-->
+      <!--This sends everything else to /public -->
+      <!--<id>nexus</id>-->
+      <!--<mirrorOf>*</mirrorOf>-->
+      <!--<url>http://34.175.50.60:8081/repository/prueba/</url>-->
+    <!--</mirror>-->
+  <!--</mirrors>-->
+  <!--<profiles>-->
+    <!--<profile>-->
+      <!--<id>nexus</id>-->
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <!--<repositories>-->
+      <!--  <repository>-->
+      <!--    <id>central</id>-->
+      <!--    <url>http://central</url>-->
+      <!--    <releases><enabled>true</enabled></releases>-->
+      <!--    <snapshots><enabled>true</enabled></snapshots>-->
+      <!--  </repository>-->
+      <!--</repositories>-->
+     <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+          <!--<id>central</id>-->
+          <!--<url>http://central</url>-->
+          <!--<releases><enabled>true</enabled></releases>-->
+           <!--<snapshots><enabled>true</enabled></snapshots>-->
+         <!--</pluginRepository>-->
+      <!-- </pluginRepositories>-->
+    <!-- </profile>-->
+   <!--</profiles>-->
+   <!--<activeProfiles>-->
+    <!--make the profile active all the time -->
+    <!--<activeProfile>nexus</activeProfile>-->
+ <!-- </activeProfiles>-->
+<!--</settings>-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+    <servers>
+        <server>
+            <id>nexus</id>
+            <username>admin</username>
+			<password>admin123</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>central</id>
+            <name>central</name>
+            <url>http://34.175.50.60:8081/repository/maven-public/</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <url>http://34.175.50.60:8081/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled><updatePolicy>always</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                    http://34.175.86.230:9000/
+                </sonar.host.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>coverage</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</settings>
