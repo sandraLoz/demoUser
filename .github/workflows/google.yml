@@ -11,6 +11,9 @@ env:
   SERVICE: srv-usuario
   REGION: europe-southwest1 
   REPOSITORY: usuario-repo
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  
 
 jobs:
   deploy:
@@ -40,6 +43,11 @@ jobs:
         run: |-               
          #gcloud auth configure-docker europe-southwest1-docker.pkg.dev --quiet
           gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin europe-southwest1-docker.pkg.dev
+          
+      - name: Analyze with Sonar
+        run: |-
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=baralga
+          mvnw -B verify sonar:sonar -Dsonar.projectKey=baralga -Dsonar.organization=baralga -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN    
          
       - name: Build Container
         run: |-
