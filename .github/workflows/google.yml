@@ -43,16 +43,16 @@ jobs:
         run: |-               
          #gcloud auth configure-docker europe-southwest1-docker.pkg.dev --quiet
           gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin europe-southwest1-docker.pkg.dev
+         
+      - name: Build Container
+        run: |-
+          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ github.sha }}" ./
           
       - name: Analyze with Sonar
         run: |-
           mvn sonar:sonar  -Dsonar.projectKey=User-Demo  -Dsonar.host.url=http://34.175.86.230:9000  -Dsonar.login=979b4313e3f7dd4f2dd576382e662907c27283e6
         # mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=User-Demo
         # mvnw -B verify sonar:sonar -Dsonar.projectKey=baralga -Dsonar.organization=baralga -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN    
-         
-      - name: Build Container
-        run: |-
-          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ github.sha }}" ./
 
       - name: Push Container
         run: |-      
