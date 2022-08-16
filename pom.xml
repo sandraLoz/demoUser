@@ -15,7 +15,7 @@
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
 		<lombok.version>1.18.10</lombok.version>
-		<mapstruct.version>1.5.2.Final</mapstruct.version>		
+		<mapstruct.version>1.5.2.Final</mapstruct.version>
 		<sonar.projectKey>User-Demo</sonar.projectKey>
 	</properties>
 
@@ -31,6 +31,38 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+
+	<repositories>
+		<!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
+
+		<!-- Main Maven repository -->
+		<repository>
+			<id>central</id>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>nexus</id>
+			<url>http://34.175.50.60:8081/repository/maven-public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>project-repo</id>
+			<url>file://${project.basedir}/libs/repo</url>
+		</repository>
+
+	</repositories>
+
 	<dependencies>
 
 		<dependency>
@@ -108,9 +140,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		
 	</dependencies>
+
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
