@@ -12,7 +12,7 @@
         <mirror>
             <id>central</id>
             <name>central</name>
-            <url>http://34.175.50.60:8081/repository/maven-public/</url>
+            <url>http://34.175.86.230:8081/repository/maven-public/</url>
             <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>
@@ -27,7 +27,7 @@
             <repositories>
                 <repository>
                     <id>nexus</id>
-                    <url>http://34.175.50.60:8081/repository/maven-public/</url>
+                    <url>http://34.175.86.230:8081/repository/maven-public/</url>
                     <releases>
                         <enabled>true</enabled><updatePolicy>always</updatePolicy>
                     </releases>
@@ -46,7 +46,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                    http://34.175.86.230:9000/
+                    http://34.175.43.86:9000/
                 </sonar.host.url>
             </properties>
         </profile>
@@ -80,45 +80,3 @@
         </profile>
     </profiles>
 </settings>
-<!-- settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
-    <servers>
-        <server>
-            <id>nexus</id>
-            <username>admin</username>
-			<password>admin123</password>
-        </server>
-    </servers>
-    <mirrors>
-        <mirror>
-            <id>central</id>
-            <name>central</name>
-            <url>http://34.175.50.60:8081/repository/maven-public/</url>
-            <mirrorOf>*</mirrorOf>
-        </mirror>
-    </mirrors>
-    <pluginGroups>
-        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-    </pluginGroups>
-    <profiles>
-        <profile>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>nexus</id>
-                    <url>http://34.175.50.60:8081/repository/maven-public/</url>
-                    <releases>
-                        <enabled>true</enabled><updatePolicy>always</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-</settings -->
