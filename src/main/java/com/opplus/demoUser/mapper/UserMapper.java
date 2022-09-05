@@ -1,6 +1,7 @@
 package com.opplus.demoUser.mapper;
 
 import org.mapstruct.Mapper;
+
 import com.opplus.demoUser.domain.UserEntity;
 import com.opplus.demoUser.dto.UserDto;
 
