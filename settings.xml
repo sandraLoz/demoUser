@@ -10,8 +10,8 @@
     </servers>
     <mirrors>
         <mirror>
-            <id>central</id>
-            <name>central</name>
+            <id>nexus</id>
+            <name>nexus</name>
             <url>http://34.175.86.230:8081/repository/maven-public/</url>
             <mirrorOf>*</mirrorOf>
         </mirror>
@@ -46,7 +46,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                    http://34.175.86.230:9000/
+                    http://34.175.50.60:9000/
                 </sonar.host.url>
             </properties>
         </profile>
